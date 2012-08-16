@@ -4,4 +4,5 @@ class Event < ActiveRecord::Base
   belongs_to :manager, :class_name => "User", :foreign_key => "created_by"
   belongs_to :assignee, :class_name => "User", :foreign_key => "assigned_to"
   attr_accessible :user_id, :car_id, :assigned_to, :created_by, :end_date, :start_date, :status
+  has_and_belongs_to_many :service_types
 end

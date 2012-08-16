@@ -1,4 +1,6 @@
 MightyCrm::Application.routes.draw do
+  resources :service_types
+
   resources :events
 
   resources  :brands do 

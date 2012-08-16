@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @service_type.title
+
+= link_to 'Edit', edit_service_type_path(@service_type)
+\|
+= link_to 'Back', service_types_path
