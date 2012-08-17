@@ -17,9 +17,9 @@
       %td= event.start_date
       %td= event.end_date
       %td= event.status
-      %td= event.client_id
+      %td
       %td= event.car
-      %td= event.created_by
+      %td= event.manager.name
       %td= link_to 'Show', event
       %td= link_to 'Edit', edit_event_path(event)
       %td= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
