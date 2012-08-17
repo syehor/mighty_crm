@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
  
   has_many :cars 
+  has_many :events 
+  has_many :created_events, :class_name => "Event", :foreign_key => "created_by" 
+  has_many :assigned_events, :class_name => "Event", :foreign_key => "assigned_to" 
 end

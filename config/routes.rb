@@ -1,4 +1,6 @@
 MightyCrm::Application.routes.draw do
+  resources :events
+
   resources  :brands do 
     resources :car_models
   end
