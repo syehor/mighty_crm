@@ -2,11 +2,11 @@ class ServiceTypesController < ApplicationController
   # GET /service_types
   # GET /service_types.json
   def index
-    @service_types = ServiceType.all
+    @service_types = ServiceType.order "title"
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @service_types }
+      format.json { render json: @service_types.where("title like ?", "%#{params[:q]}%") }
     end
   end
 

@@ -4,10 +4,11 @@
   .form-inputs
     = f.input :start_date
     = f.input :end_date
-    = f.input :status
-    = f.input :client_id
+    / = f.input :status
+    / = f.input :client_id
     = f.association :car
-    = f.input :created_by
+    = f.input :service_tokens
+    / = f.input :created_by
 
   .form-actions
     = f.button :submit
