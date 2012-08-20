@@ -6,7 +6,7 @@ class ServiceTypesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @service_types.where("title like ?", "%#{params[:q]}%") }
+      format.json { render json: @service_types.search(params[:q]) }
     end
   end
 
