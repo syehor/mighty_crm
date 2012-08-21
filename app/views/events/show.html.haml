@@ -11,13 +11,16 @@
   = @event.status
 %p
   %b Client:
-  = @event.client_id
+  = @event.client
 %p
   %b Car:
   = @event.car
 %p
   %b Created by:
   = @event.created_by
+%p
+  %b Assigned to:
+  = @event.assignee.try(:name)
 
 = link_to 'Edit', edit_event_path(@event)
 \|

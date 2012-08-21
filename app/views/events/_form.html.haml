@@ -6,7 +6,13 @@
     = f.input :end_date
     / = f.input :status
     / = f.input :client_id
-    = f.association :car
+    = f.simple_fields_for :car do |car| 
+      = car.input :color
+      = car.input :number
+      = car.input :fuel
+      = car.input :engine_size
+      = car.input :year
+      = car.association :car_model, :collection => @models, :prompt => "Choose a Car Model you mother fucker!!!"
     = f.input :service_tokens, data: { load: @event.service_types }
     / = f.input :created_by
 
