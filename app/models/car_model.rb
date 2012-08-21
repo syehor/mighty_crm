@@ -1,4 +1,5 @@
 class CarModel < ActiveRecord::Base
   belongs_to :brand
-  attr_accessible :name
+  has_many :cars
+  attr_accessible :name, :car_model_attributes
 end

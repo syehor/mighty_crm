@@ -25,6 +25,9 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    car = @event.build_car
+    car.build_car_model
+    @models = CarModel.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +44,13 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+
+    #just for testing purpose
+    if current_user 
+      @event.car.user = current_user
+      @event.assignee = current_user 
+      @event.client = current_user 
+      @event.created_by = current_user 
 
     respond_to do |format|
       if @event.save
