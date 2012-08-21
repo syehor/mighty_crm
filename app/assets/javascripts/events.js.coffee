@@ -7,3 +7,4 @@ jQuery ->
     theme: 'facebook',
     propertyToSearch: 'title',
     preventDuplicates: true
+    prePopulate: $('#event_service_tokens').data('load')

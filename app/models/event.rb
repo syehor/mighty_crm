@@ -9,9 +9,8 @@ class Event < ActiveRecord::Base
 
   attr_reader :service_tokens
 
-  def service_tokens=(ids)
-    p ids
-    self.service_type_ids = ids.split(",")
+  def service_tokens=(tokens)
+    self.service_type_ids = ServiceType.ids_from_tokens(tokens)
   end
 
 end

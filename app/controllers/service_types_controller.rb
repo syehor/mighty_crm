@@ -6,7 +6,7 @@ class ServiceTypesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @service_types.search(params[:q]) }
+      format.json { render json: @service_types.tokens(params[:q]) }
     end
   end
 

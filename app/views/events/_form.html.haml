@@ -7,7 +7,7 @@
     / = f.input :status
     / = f.input :client_id
     = f.association :car
-    = f.input :service_tokens
+    = f.input :service_tokens, data: { load: @event.service_types }
     / = f.input :created_by
 
   .form-actions
