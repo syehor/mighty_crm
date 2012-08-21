@@ -1,4 +1,6 @@
 MightyCrm::Application.routes.draw do
+  get "users/index"
+
   get "home/index"
 
   resources :service_types
