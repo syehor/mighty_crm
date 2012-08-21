@@ -51,6 +51,7 @@ class EventsController < ApplicationController
       @event.assignee = current_user 
       @event.client = current_user 
       @event.created_by = current_user 
+    end
 
     respond_to do |format|
       if @event.save
