@@ -1,0 +1,10 @@
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, input_html: {data: {"user-autocomplete" => user_autocomplete_users_path, "new-event-path" => "#{new_user_event_path('user_id')}"}}
+    = f.input :email, input_html: {autocomplete: :off}
+    = f.input :password
+    = f.input :password_confirmation
+  .form-actions
+    = f.button :submit

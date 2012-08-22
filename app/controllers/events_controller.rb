@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  # GET /events
-  # GET /events.json
+
+  before_filter :event_client, except: [:index]
+
   def index
     @events = Event.all
 
@@ -24,11 +25,11 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = Event.new
+    @event = @client.events.build
     car = @event.build_car
     car.build_car_model
     @models = CarModel.all
-    @event.build_client
+    # @event.build_client
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,17 +37,14 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1/edit
-  def edit
-    @event = Event.find(params[:id])
-  end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    @event = @client.events.build(params[:event])
     #just for testing purpose
     if current_user 
+      # @event.client = User
       @event.car.user = current_user
       @event.assignee = current_user 
       # @event.client = current_user 
@@ -64,6 +62,10 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/1/edit
+  def edit
+    @event = Event.find(params[:id])
+  end
   # PUT /events/1
   # PUT /events/1.json
   def update
@@ -91,4 +93,10 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def event_client
+      @client = User.find(params[:user_id])
+    end
 end

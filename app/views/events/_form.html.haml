@@ -1,16 +1,10 @@
-= simple_form_for(@event) do |f|
+= simple_form_for( [@client, @event] ) do |f|
   = f.error_notification
-  =@event.errors.inspect
 
   .form-inputs
-    = f.simple_fields_for :client do |client| 
-      = client.input :name, input_html: {data: {"user-autocomplete" => users_index_path}}
-      = client.input :email, :required => false
-      = client.input :password
     = f.input :start_date
     = f.input :end_date
     / = f.input :status
-    / = f.input :client_id
     = f.simple_fields_for :car do |car|
       .input-append.color{:data => { "color-format" => "rgb" }}
         = car.text_field :color, :readonly => true
@@ -22,7 +16,6 @@
       = car.input :year
       = car.association :car_model, :collection => @models, :prompt => "Choose a Car Model you mother fucker!!!"
     = f.input :service_tokens, data: { load: @event.service_types }
-    / = f.input :created_by
 
   .form-actions
     = f.button :submit

@@ -1,11 +1,16 @@
 MightyCrm::Application.routes.draw do
-  get "users/index"
 
   get "home/index"
 
-  resources :service_types
+  resources :users do
+    get :user_autocomplete, :on => :collection
+    resources :events
+  end
 
   resources :events
+
+  resources :service_types
+
 
   resources :car_models
 
