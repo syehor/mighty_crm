@@ -14,7 +14,10 @@
       = car.input :fuel
       = car.input :engine_size
       = car.input :year
-      = car.association :car_model, :collection => @models, :prompt => "Choose a Car Model you mother fucker!!!"
+      = car.input :brand do
+        = select_tag :brand_id, "<option value=''>Choose a Brand</option>".html_safe + options_for_select(@brands.map {|brand| [brand.name, brand.id] })
+      = car.input :car_model do
+        = car.grouped_collection_select :car_model_id, @brands, :car_models, :name, :id, :name, include_blank: "Choose a Car Model"
     = f.input :service_tokens, data: { load: @event.service_types }
 
   .form-actions

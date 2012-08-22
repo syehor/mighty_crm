@@ -2,6 +2,7 @@
   = f.error_notification
 
   .form-inputs
+    = select_tag :brand_id, "<option value=''>Select One</option>".html_safe + options_for_select(@brands.map {|brand| [brand.name, brand.id] })
     = f.input :name
 
   .form-actions

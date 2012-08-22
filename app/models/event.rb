@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  attr_accessible :user_id, :car_id, :assigned_to, :end_date, :start_date, :status, :service_tokens, :car_attributes, :user_name, :client_attributes
+  attr_accessible :user_id, :car_id, :assigned_to, :end_date, :start_date, :status, :service_tokens, :car_attributes, :user_name, :client_attributes, :car_model_id
   belongs_to :car
   belongs_to :user#, :class_name => "User", :foreign_key => "user_id"
   belongs_to :manager, :class_name => "User", :foreign_key => "created_by"

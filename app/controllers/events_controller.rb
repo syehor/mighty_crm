@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_filter :event_client, except: [:index]
+  before_filter :event_client, except: [:index, :show]
 
   def index
     @events = Event.all
@@ -11,8 +11,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     @event = Event.find(params[:id])
 
@@ -22,9 +20,8 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/new
-  # GET /events/new.json
   def new
+    @brands = Brand.order :name
     @event = @client.events.build
     car = @event.build_car
     car.build_car_model
@@ -37,9 +34,6 @@ class EventsController < ApplicationController
     end
   end
 
-
-  # POST /events
-  # POST /events.json
   def create
     @event = @client.events.build(params[:event])
     #just for testing purpose
@@ -62,12 +56,10 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
   end
-  # PUT /events/1
-  # PUT /events/1.json
+
   def update
     @event = Event.find(params[:id])
 
@@ -82,8 +74,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event = Event.find(params[:id])
     @event.destroy

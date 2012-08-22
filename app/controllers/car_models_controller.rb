@@ -1,6 +1,5 @@
 class CarModelsController < ApplicationController
-  # GET /car_models
-  # GET /car_models.json
+
   def index
     @car_models = CarModel.all
 
@@ -10,8 +9,6 @@ class CarModelsController < ApplicationController
     end
   end
 
-  # GET /car_models/1
-  # GET /car_models/1.json
   def show
     @car_model = CarModel.find(params[:id])
 
@@ -21,9 +18,8 @@ class CarModelsController < ApplicationController
     end
   end
 
-  # GET /car_models/new
-  # GET /car_models/new.json
   def new
+    @brands = Brand.order :name
     @car_model = CarModel.new
 
     respond_to do |format|
@@ -32,16 +28,9 @@ class CarModelsController < ApplicationController
     end
   end
 
-  # GET /car_models/1/edit
-  def edit
-    @car_model = CarModel.find(params[:id])
-  end
-
-  # POST /car_models
-  # POST /car_models.json
   def create
-    @car_model = CarModel.new(params[:car_model])
-
+    @car_model = CarModel.new(params[:car_model].merge(brand_id: params[:brand_id]))
+    
     respond_to do |format|
       if @car_model.save
         format.html { redirect_to @car_model, notice: 'Car model was successfully created.' }
@@ -53,8 +42,10 @@ class CarModelsController < ApplicationController
     end
   end
 
-  # PUT /car_models/1
-  # PUT /car_models/1.json
+  def edit
+    @car_model = CarModel.find(params[:id])
+  end
+
   def update
     @car_model = CarModel.find(params[:id])
 
@@ -69,8 +60,6 @@ class CarModelsController < ApplicationController
     end
   end
 
-  # DELETE /car_models/1
-  # DELETE /car_models/1.json
   def destroy
     @car_model = CarModel.find(params[:id])
     @car_model.destroy
@@ -80,4 +69,5 @@ class CarModelsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
