@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :start_date
     = f.input :end_date
+    = f.input :status, :collection => statuses_list(Event::EVENT_STATUSES)
     / = f.input :status
     = f.simple_fields_for :car do |car|
       .input-append.color{:data => { "color-format" => "rgb" }}

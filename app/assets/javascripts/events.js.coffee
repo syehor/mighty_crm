@@ -20,22 +20,22 @@ jQuery ->
 
   # brands and car models
 
-  car_models = $('#event_car_attributes_car_model').html()
+  car_models = $('#event_car_attributes_car_model_id').html()
   car_model_options = $(car_models)
   brand = $('#brand_id :selected').text()
   options = car_model_options.filter("optgroup[label='" + brand + "']").html()
   
   if brand == "Choose a Brand"
-    $('#event_car_attributes_car_model').html('<option value="">Choose a Car Model</option>')
+    $('#event_car_attributes_car_model_id').html('<option value="">Choose a Car Model</option>')
   
   if options
-    $('#event_car_attributes_car_model').html(options)
-    $('#event_car_attributes_car_model option[value='+brand+']').attr('selected', true)
+    $('#event_car_attributes_car_model_id').html(options)
+    $('#event_car_attributes_car_model_id option[value='+brand+']').attr('selected', true)
 
   $('#brand_id').change ->
     brand = $('#brand_id :selected').text()
     options = car_model_options.filter("optgroup[label='#{brand}']").html()
     if options
-      $('#event_car_attributes_car_model').html(options)
+      $('#event_car_attributes_car_model_id').html(options)
     else
-      $('#event_car_attributes_car_model').html('<option value="">Choose a Car Model</option>')
+      $('#event_car_attributes_car_model_id').html('<option value="">Choose a Car Model</option>')
