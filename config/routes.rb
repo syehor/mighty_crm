@@ -11,7 +11,6 @@ MightyCrm::Application.routes.draw do
 
   resources :service_types
 
-
   resources :car_models
 
   resources  :brands do 

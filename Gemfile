@@ -21,3 +21,4 @@ gem "bootstrap-sass", ">= 2.0.4.0"
 gem "devise", ">= 2.1.2"
 gem "simple_form"
 gem "therubyracer", :group => :assets, :platform => :ruby
+gem 'backbone-on-rails'

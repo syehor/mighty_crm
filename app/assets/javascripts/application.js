@@ -16,4 +16,6 @@
 //= require jquery.tokeninput
 //= require bootstrap
 //= require bootstrap-colorpicker
-//= require_tree .
+//
+//= require underscore
+//= require backbone

@@ -1,3 +1,5 @@
+= content_for :js do
+  = javascript_include_tag 'users'
 = simple_form_for(@user) do |f|
   = f.error_notification
 
